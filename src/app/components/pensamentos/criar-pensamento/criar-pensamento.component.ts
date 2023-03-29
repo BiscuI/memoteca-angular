@@ -1,3 +1,4 @@
+import { PensamentoService } from './../pensamento.service';
 import { Pensamento } from './../pensamento/pensamento';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,19 +10,18 @@ import { Component, OnInit } from '@angular/core';
 export class CriarPensamentoComponent implements OnInit {
 
   pensamento : Pensamento = {
-    id : 1,
-    conteudo : 'No que você está pensando?',
-    autoria : 'Quem criou tal pensamento?',
+    conteudo : '',
+    autoria : '',
     modelo : ''
   }
 
-  constructor() { }
+  constructor(private service :PensamentoService) { }
 
   ngOnInit(): void {
   }
 
   criarPensamento(){
-    alert("UEPA CAVALO ELE GOXTA")
+    this.service.criar(this.pensamento).subscribe()
   }
 
   cancelarPensamento(){
